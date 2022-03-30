@@ -1,0 +1,19 @@
+﻿<Window x:Class="RFID_SYSTEM.Views.AuthDBSettings"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RFID_SYSTEM.Views"
+        mc:Ignorable="d"
+        Title="AuthDBSettings" Height="210" Width="257" WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Background="#FF2B2929">
+    <Grid Background="#FF464242">
+        <Label Content="Подключение к базе данных" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" Foreground="White" FontSize="18"/>
+        <TextBox HorizontalAlignment="Left" Margin="68,54,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="154" Height="30" VerticalContentAlignment="Center" Background="#FF464242" BorderBrush="#FF464242" Foreground="White"/>
+        <TextBox HorizontalAlignment="Left" Margin="68,97,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="154" Height="30" VerticalContentAlignment="Center" Background="#FF464242" BorderBrush="#FF464242" Foreground="White"/>
+        <Button Content="Протестировать" HorizontalAlignment="Left" Margin="19,152,0,0" VerticalAlignment="Top" Width="102"/>
+        <Button Content="Сохранить" HorizontalAlignment="Left" Margin="145,152,0,0" VerticalAlignment="Top" Width="94"/>
+        <Label Content="IP" HorizontalAlignment="Left" Margin="43,52,0,0" VerticalAlignment="Top" Foreground="White" FontSize="18" RenderTransformOrigin="0.422,1.105"/>
+        <Label Content="База данных" HorizontalAlignment="Left" Margin="0,100,0,0" VerticalAlignment="Top" Foreground="White" FontSize="10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="69"/>
+
+    </Grid>
+</Window>

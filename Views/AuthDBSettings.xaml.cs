@@ -10,17 +10,16 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace RFID_SYSTEM
+namespace RFID_SYSTEM.Views
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для AuthDBSettings.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class AuthDBSettings : Window
     {
-        public MainWindow()
+        public AuthDBSettings()
         {
             InitializeComponent();
         }

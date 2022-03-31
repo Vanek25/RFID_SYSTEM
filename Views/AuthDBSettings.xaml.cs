@@ -23,5 +23,15 @@ namespace RFID_SYSTEM.Views
         {
             InitializeComponent();
         }
+
+        private void closeDbSettings(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+        private void saveIpDb(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

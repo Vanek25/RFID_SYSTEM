@@ -6,14 +6,77 @@
         xmlns:local="clr-namespace:RFID_SYSTEM.Views"
         mc:Ignorable="d"
         Title="AuthDBSettings" Height="210" Width="257" WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Background="#FF2B2929">
+    <Window.Resources>
+        <ImageBrush x:Key="closeIconDbSetting" ImageSource="/Resources/Icons/Close.png" Stretch="Fill"/>
+        <Style x:Key="FocusVisual">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle Margin="2" StrokeDashArray="1 2" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" SnapsToDevicePixels="true" StrokeThickness="1"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <SolidColorBrush x:Key="Button.Static.Background" Color="#FFDDDDDD"/>
+        <SolidColorBrush x:Key="Button.Static.Border" Color="#FF464242"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#FFBEE6FD"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Border" Color="#FF464242"/>
+        <SolidColorBrush x:Key="Button.Pressed.Background" Color="#FFC4E5F6"/>
+        <SolidColorBrush x:Key="Button.Pressed.Border" Color="#FF464242"/>
+        <SolidColorBrush x:Key="Button.Disabled.Background" Color="#FFF4F4F4"/>
+        <SolidColorBrush x:Key="Button.Disabled.Border" Color="#FFADB2B5"/>
+        <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#FF838383"/>
+        <Style x:Key="closeBtnDbSettings" TargetType="{x:Type Button}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+            <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsDefaulted" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource closeIconDbSetting}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.MouseOver.Border}"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource closeIconDbSetting}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Pressed.Border}"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
+                                <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
     <Grid Background="#FF464242">
-        <Label Content="Подключение к базе данных" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" Foreground="White" FontSize="18"/>
-        <TextBox HorizontalAlignment="Left" Margin="68,54,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="154" Height="30" VerticalContentAlignment="Center" Background="#FF464242" BorderBrush="#FF464242" Foreground="White"/>
-        <TextBox HorizontalAlignment="Left" Margin="68,97,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="154" Height="30" VerticalContentAlignment="Center" Background="#FF464242" BorderBrush="#FF464242" Foreground="White"/>
-        <Button Content="Протестировать" HorizontalAlignment="Left" Margin="19,152,0,0" VerticalAlignment="Top" Width="102"/>
-        <Button Content="Сохранить" HorizontalAlignment="Left" Margin="145,152,0,0" VerticalAlignment="Top" Width="94"/>
+        <Label Content="Подключение к базе данных" HorizontalAlignment="Center" Margin="0,14,0,0" VerticalAlignment="Top" Foreground="White" FontSize="18"/>
+        <TextBox x:Name="ipDbSetting" HorizontalAlignment="Left" Margin="68,54,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="154" Height="30" VerticalContentAlignment="Center" Background="#FF464242" BorderBrush="#FF464242" Foreground="White"/>
+        <TextBox x:Name="dbNameSetting" HorizontalAlignment="Left" Margin="68,97,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="154" Height="30" VerticalContentAlignment="Center" Background="#FF464242" BorderBrush="#FF464242" Foreground="White"/>
+        <Button x:Name="saveDbSettings" Content="Сохранить" HorizontalAlignment="Left" Margin="68,153,0,0" VerticalAlignment="Top" Width="154" Background="#FF66B1B3" Click="saveIpDb"/>
         <Label Content="IP" HorizontalAlignment="Left" Margin="43,52,0,0" VerticalAlignment="Top" Foreground="White" FontSize="18" RenderTransformOrigin="0.422,1.105"/>
         <Label Content="База данных" HorizontalAlignment="Left" Margin="0,100,0,0" VerticalAlignment="Top" Foreground="White" FontSize="10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="69"/>
-
+        <Line X1="68" Y1="85" X2="222" Y2="85" Stroke="White" />
+        <Line X1="68" Y1="128" X2="222" Y2="128" Stroke="White" />
+        <Button Style="{DynamicResource closeBtnDbSettings}" x:Name="cancelDbSetting" Content="" HorizontalAlignment="Left" Margin="237,0,0,0" VerticalAlignment="Top" Width="20" Height="20" Cursor="Hand" Click="closeDbSettings">
+            <Button.Background>
+                <ImageBrush ImageSource="/Resources/Icons/Close.png"/>
+            </Button.Background>
+        </Button>
     </Grid>
 </Window>

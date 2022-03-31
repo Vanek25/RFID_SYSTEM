@@ -1,0 +1,85 @@
+﻿<Window x:Class="RFID_SYSTEM.Views.IdentificationOfPersonal"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RFID_SYSTEM.Views"
+        mc:Ignorable="d"
+        Title="IdentificationOfPersonal" Height="652" Width="1338" WindowStyle="None" ResizeMode="NoResize" Background="#FF313752" WindowStartupLocation="CenterScreen" WindowState="Normal">
+
+    <Grid>
+        <Grid.Effect>
+            <DropShadowEffect BlurRadius="30" ShadowDepth="2" Direction="-90" Color="Gray"/>
+        </Grid.Effect>
+
+        <StackPanel Margin="0,0,1268,0" Background="#FF1E202F">
+            <Button x:Name="Home" Height="58" Background="Transparent" BorderBrush="Transparent" Margin="0,90,0,20" Click="openHomePage">
+                <Image Source="/Resources/Icons/Home.png" Stretch="Fill" Height="42" Width="41"></Image>
+            </Button>
+            <Button x:Name="Settings" Height="56" Background="Transparent" BorderBrush="Transparent" Margin="0,320,0,20" Click="openSettings">
+                <Image Source="/Resources/Icons/SettingMainPage.png" Stretch="Fill" Height="42" Width="41"></Image>
+            </Button>
+
+        </StackPanel>
+
+        <Grid Margin="70,0,0,614" Background="#FF1E202F">
+            <Label Content="Система RFID" FontFamily="Open sens condensed" FontSize="26" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White"/>
+            <Button x:Name="Close" Width="40" HorizontalAlignment="Right" BorderBrush="Transparent" Background="Transparent"  Click="closeApp">
+                <Image Source="/Resources/Icons/Close.png" Stretch="Fill" Cursor="Hand"></Image>
+            </Button>
+        </Grid>
+        <TabControl x:Name="Menu" Margin="70,38,0,0" Background="#FF313752" BorderBrush="#FF313752" SelectedItem="{Binding SelectedItem}">
+            <TabItem x:Name="HomeTab" Header="Home" Visibility="Visible">
+                <TabItem.Background>
+                    <LinearGradientBrush EndPoint="0,1">
+                        <GradientStop Color="#FFF0F0F0"/>
+                        <GradientStop Color="#FF313752" Offset="1"/>
+                    </LinearGradientBrush>
+                </TabItem.Background>
+                <Grid Background="#FF313752">
+                    <Image Height="227" Margin="527,10,527,0" VerticalAlignment="Top" FlowDirection="LeftToRight" Source="/Resources/Icons/MainUser.png"/>
+                    <TextBox HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" Width="678" Height="48" Background="#FF313752" SelectionBrush="#FF313752" VerticalContentAlignment="Center" Foreground="White" FontSize="36" FontFamily="Berlin Sans FB Demi" FontWeight="Normal" BorderBrush="#FF313752" HorizontalContentAlignment="Center"/>
+                    <Label Content="ФИО" HorizontalAlignment="Left" Margin="193,0,0,0" VerticalAlignment="Center" Height="78" Width="94" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="24" FontWeight="Bold"/>
+                    <Line X1="290" Y1="325" X2="970" Y2="325" Stroke="White" />
+                    <Line X1="190" Y1="423" X2="725" Y2="423" Stroke="White" />
+                    <Line X1="190" Y1="500" X2="725" Y2="500" Stroke="White" />
+                    <TextBox HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="529" Height="48" Background="#FF313752" SelectionBrush="#FF313752" VerticalContentAlignment="Center" Foreground="White" FontSize="36" FontFamily="Berlin Sans FB Demi" FontWeight="Normal" BorderBrush="#FF313752" HorizontalContentAlignment="Center" Margin="193,367,0,0"/>
+                    <Label Content="Компания" HorizontalAlignment="Left" Margin="10,352,0,0" VerticalAlignment="Top" Height="78" Width="155" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="24" FontWeight="Bold"/>
+                    <TextBox HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="529" Height="48" Background="#FF313752" SelectionBrush="#FF313752" VerticalContentAlignment="Center" Foreground="White" FontSize="36" FontFamily="Berlin Sans FB Demi" FontWeight="Normal" BorderBrush="#FF313752" HorizontalContentAlignment="Center" Margin="193,445,0,0"/>
+                    <Label Content="Должность" HorizontalAlignment="Left" Margin="10,430,0,0" VerticalAlignment="Top" Height="78" Width="155" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="24" FontWeight="Bold"/>
+                    <Image HorizontalAlignment="Left" Height="152" Margin="88,38,0,0" VerticalAlignment="Top" Width="152" Source="/Resources/Icons/LeftArrow.png" Stretch="Fill"/>
+                    <Image Height="152" Margin="1020,38,88,0" VerticalAlignment="Top" Source="/Resources/Icons/RightArrow.png" Stretch="Fill"/>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="SettingsTab" Header ="Settings" Visibility="Visible">
+                <TabItem.Background>
+                    <LinearGradientBrush EndPoint="0,1">
+                        <GradientStop Color="#FFF0F0F0"/>
+                        <GradientStop Color="#FF313752" Offset="1"/>
+                    </LinearGradientBrush>
+                </TabItem.Background>
+                <Grid Background="#FF313752">
+                    <GroupBox Header="Устройство" Margin="29,41,557,427" Foreground="#FFFFFCFC" FontSize="24" FontWeight="Bold">
+                        <Grid>
+                            <ComboBox x:Name="SerialPortsCmbBox" Margin="10,0,0,0" VerticalAlignment="Center" Height="44" HorizontalAlignment="Left" Width="260" Visibility="Visible"/>
+                            <Button x:Name="refreshComPortBtn" Margin="309,18,0,17" Content="Обновить" HorizontalAlignment="Left" Width="137" Click="refreshComPort"/>
+                            <Button x:Name="SerialPortConnectBtn" Margin="468,18,0,17" Content="Подключить" HorizontalAlignment="Left" Width="178" Click="connectArduino"/>
+
+                        </Grid>
+
+                    </GroupBox>
+                    <ListView x:Name="listOfRfidNumbers" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="106,181,852,180" FontSize="16">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+
+
+                </Grid>
+            </TabItem>
+        </TabControl>
+
+    </Grid>
+</Window>

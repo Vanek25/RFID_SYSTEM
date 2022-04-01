@@ -75,6 +75,13 @@
                             </GridView>
                         </ListView.View>
                     </ListView>
+                    <ListView x:Name="listOfEmployees" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="510,181,448,180" FontSize="16">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
 
 
                 </Grid>

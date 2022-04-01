@@ -27,6 +27,17 @@ namespace RFID_SYSTEM.Views
         public IdentificationOfPersonal()
         {
             InitializeComponent();
+
+            using (rfid_systemContext db = new rfid_systemContext())
+            {
+                var employees = db.Employees.ToList();
+
+                foreach (Employees u in employees)
+                {
+                    listOfEmployees.Items.Add(u.Fio);
+                }
+            }
+
             InitializedSerialPorts();
         }
 
@@ -99,7 +110,6 @@ namespace RFID_SYSTEM.Views
 
         private void closeApp(object sender, RoutedEventArgs e)
         {
-            serialPort.Close();
             Application application = Application.Current;
             application.Shutdown();
         }

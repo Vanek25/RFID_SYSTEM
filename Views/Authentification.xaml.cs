@@ -34,5 +34,12 @@ namespace RFID_SYSTEM.Views
             AuthDBSettings authDBSettings = new AuthDBSettings();
             authDBSettings.Show();
         }
+
+        private void connectToDb(object sender, RoutedEventArgs e)
+        {
+            var connection = System.Configuration.ConfigurationManager.ConnectionStrings["ConnectToRfid_system"].ConnectionString;
+
+
+        }
     }
 }

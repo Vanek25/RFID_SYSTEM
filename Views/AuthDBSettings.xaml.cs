@@ -31,7 +31,7 @@ namespace RFID_SYSTEM.Views
 
         private void saveIpDb(object sender, RoutedEventArgs e)
         {
-
+            
         }
     }
 }

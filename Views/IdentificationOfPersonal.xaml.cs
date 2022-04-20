@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.IO.Ports;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
+using System.Timers;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -13,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
+
 namespace RFID_SYSTEM.Views
 {
     /// <summary>
@@ -20,23 +23,17 @@ namespace RFID_SYSTEM.Views
     /// </summary>
     public partial class IdentificationOfPersonal : Window
     {
-        private delegate void updateDelegate(string txt);
-        SerialPort serialPort;
-        string[] serialPorts;
 
+        private delegate void updateDelegate(string txt);
+        SerialPort serialPort = new SerialPort();
+        Thread thrdGetingInfoFromArduion;
+        string[] serialPorts;
+ 
         public IdentificationOfPersonal()
         {
             InitializeComponent();
 
-            using (rfid_systemContext db = new rfid_systemContext())
-            {
-                var employees = db.Employees.ToList();
-
-                foreach (Employees u in employees)
-                {
-                    listOfEmployees.Items.Add(u.Fio);
-                }
-            }
+            Menu.SelectedIndex = 0;
 
             InitializedSerialPorts();
         }
@@ -60,27 +57,63 @@ namespace RFID_SYSTEM.Views
         }
 
 
+        private void updateEmp(string txt)
+        {
+            listOfEmployees.Items.Add(txt);
+        }
+
         private void updateInfo(string txt)
         {
             listOfRfidNumbers.Items.Add(txt);
+        }
+
+        private void getPresonFio(string rfidNum) // разобраться с типами возвращаемых значений (войд не катит)
+        {
+            using (rfid_systemContext db = new rfid_systemContext())
+            {
+                var employee = (from e in db.Employees
+                                join rf in db.RfidNumbers on e.Rfid equals rf.IdRfid
+                                where rf.Number == rfidNum
+                                select e).ToList();
+
+                listOfEmployees.Dispatcher.BeginInvoke(new updateDelegate(updateEmp), employee[employee.Count - 1].Fio);
+                
+            }
+        }
+
+
+        private void readingInfoFromArduino()
+        {
+            string rfidNumber = "";
+            while (isConnectToArduino) //разобраться с коннектом
+            {
+                rfidNumber = serialPort.ReadLine();
+                listOfRfidNumbers.Dispatcher.BeginInvoke(new updateDelegate(updateInfo), rfidNumber);
+                getPresonFio(rfidNumber.Substring(0, rfidNumber.Length - 1));
+            }
+            
         }
 
 
         #region Подключение к ардуино
         bool isConnectToArduino = false;
 
-        private void ConnectToArduino()
+        public void ConnectToArduino()
         {
             try
             {
                 string selectedSerialPort = SerialPortsCmbBox.SelectedItem.ToString();
                 serialPort = new SerialPort(selectedSerialPort, 9600);
                 serialPort.Open();
+                thrdGetingInfoFromArduion = new Thread(readingInfoFromArduino);
+                thrdGetingInfoFromArduion.Start();
+
+                ElipseAboutConnect.Fill = Brushes.Green;
                 SerialPortConnectBtn.Content = "Отключить";
+                LblConnect.Content = "Устройство подключено";
                 SerialPortsCmbBox.IsEnabled = false;
                 isConnectToArduino = true;
-                /*string rfidNumber = serialPort.ReadLine();
-                listOfRfidNumbers.Dispatcher.BeginInvoke(new updateDelegate(updateInfo), rfidNumber);*/
+               
             }
 
             catch(UnauthorizedAccessException)
@@ -90,7 +123,7 @@ namespace RFID_SYSTEM.Views
 
             catch (NullReferenceException)
             {
-                MessageBox.Show("Это не тот COM порт, он пуст! Выберите другой.");
+                MessageBox.Show("COM порт не может быть пустым! Выберите другой.");
             }
             
             catch(Exception ex)
@@ -104,8 +137,12 @@ namespace RFID_SYSTEM.Views
         {
             SerialPortsCmbBox.IsEnabled = true;
             SerialPortConnectBtn.Content = "Подключить";
+            ElipseAboutConnect.Fill = Brushes.Red;
+            LblConnect.Content = "Устройство не подключено";
             isConnectToArduino = false;
+            thrdGetingInfoFromArduion.Suspend();
             serialPort.Close();
+            
         }
 
         private void closeApp(object sender, RoutedEventArgs e)
@@ -116,12 +153,12 @@ namespace RFID_SYSTEM.Views
 
         private void openHomePage(object sender, RoutedEventArgs e)
         {
-            
+            Menu.SelectedIndex = 0;
         }
 
         private void openSettings(object sender, RoutedEventArgs e)
         {
-            
+            Menu.SelectedIndex = 1;
         }
 
         private void connectArduino(object sender, RoutedEventArgs e)

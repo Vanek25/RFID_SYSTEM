@@ -39,6 +39,7 @@ namespace RFID_SYSTEM.Views
         {
             var connection = System.Configuration.ConfigurationManager.ConnectionStrings["ConnectToRfid_system"].ConnectionString;
 
+            
 
         }
     }

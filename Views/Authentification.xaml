@@ -131,13 +131,57 @@
                 </Button.Background>
             </Button>
         </Border>
-        <Image HorizontalAlignment="Center" Height="131" Margin="0,10,0,0" VerticalAlignment="Top" Width="128" Source="/Resources/Icons/Logo.png"/>
-        <TextBox HorizontalAlignment="Left" Margin="103,160,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="214" Height="38" Background="#FF2B2929" Foreground="White" BorderBrush="#FF2B2929" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" FontSize="22" FontWeight="Bold"/>
-        <Button x:Name="authDbBtn" Content="Войти" HorizontalAlignment="Center" Margin="0,298,0,0" VerticalAlignment="Top" Height="33" Width="152" Background="#FF535F6D" Foreground="White" Click="connectToDb"/>
-        <CheckBox Content="Запомнить" HorizontalAlignment="Center" Margin="0,348,0,0" VerticalAlignment="Top" Background="White" Foreground="White" Width="84"/>
-        <Image HorizontalAlignment="Left" Height="38" Margin="54,160,0,0" VerticalAlignment="Top" Width="38" Source="/Resources/Icons/Login.png" Stretch="Fill"/>
-        <PasswordBox HorizontalAlignment="Left" Margin="103,221,0,0" VerticalAlignment="Top" Width="214" Height="38" Background="#FF2B2929" Foreground="White" BorderBrush="#FF2B2929" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" FontSize="20"/>
-        <Image HorizontalAlignment="Left" Height="38" Margin="54,221,0,0" VerticalAlignment="Top" Width="38" Source="/Resources/Icons/Password.png" Stretch="Fill"/>
+        <Image Height="131" Margin="126,10,126,0" 
+               VerticalAlignment="Top" 
+               Source="/Resources/Icons/Logo.png"/>
+        <TextBox x:Name="txtbxLogin" HorizontalAlignment="Left" Margin="103,160,0,0" TextWrapping="Wrap" 
+                 VerticalAlignment="Top" 
+                 Width="214" 
+                 Height="38" 
+                 Background="#FF2B2929" 
+                 Foreground="White" 
+                 BorderBrush="#FF2B2929" 
+                 HorizontalContentAlignment="Left" 
+                 VerticalContentAlignment="Center" 
+                 FontSize="22" 
+                 FontWeight="Bold" SelectionBrush="#FF2B2929"/>
+        <Button x:Name="authDbBtn" Content="Войти" HorizontalAlignment="Center" Margin="0,298,0,0" 
+                VerticalAlignment="Top" 
+                Height="33" Width="152" 
+                Background="#FF535F6D" 
+                Foreground="White" 
+                Click="connectToDb" FontSize="18">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="15"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <CheckBox Content="Запомнить" HorizontalAlignment="Center" Margin="0,348,0,0" 
+                  VerticalAlignment="Top" 
+                  Background="White" 
+                  Foreground="White" 
+                  Width="84"/>
+        <Image HorizontalAlignment="Left" Height="38" Margin="54,160,0,0" 
+               VerticalAlignment="Top" 
+               Width="38" 
+               Source="/Resources/Icons/Login.png" 
+               Stretch="Fill"/>
+        <PasswordBox x:Name="txtbxPass" HorizontalAlignment="Left" Margin="103,221,0,0" 
+                     VerticalAlignment="Top" 
+                     Width="214" 
+                     Height="38" 
+                     Background="#FF2B2929" 
+                     Foreground="White" 
+                     BorderBrush="#FF2B2929" 
+                     VerticalContentAlignment="Center" 
+                     HorizontalContentAlignment="Left" 
+                     FontSize="20" SelectionBrush="#FF2B2929"/>
+        <Image HorizontalAlignment="Left" Height="38" Margin="54,221,0,0" 
+               VerticalAlignment="Top" 
+               Width="38" 
+               Source="/Resources/Icons/Password.png" 
+               Stretch="Fill"/>
         <Button Style="{DynamicResource closeBtnStyle}" Content="" HorizontalAlignment="Left" Margin="355,4,0,0" VerticalAlignment="Top" Width="19" BorderBrush="#FF2B2929" BorderThickness="1,1,1,1" Click="closeApp" Cursor="Hand">
             <Button.Background>
                 <ImageBrush Stretch="Fill" ImageSource="/Resources/Icons/Close.png"/>

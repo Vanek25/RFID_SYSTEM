@@ -6,6 +6,9 @@
         xmlns:local="clr-namespace:RFID_SYSTEM.Views"
         mc:Ignorable="d"
         Title="AuthDBSettings" Height="210" Width="257" WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Background="#FF2B2929">
+    
+        
+    
     <Window.Resources>
         <ImageBrush x:Key="closeIconDbSetting" ImageSource="/Resources/Icons/Close.png" Stretch="Fill"/>
         <Style x:Key="FocusVisual">
@@ -64,19 +67,21 @@
             </Setter>
         </Style>
     </Window.Resources>
-    <Grid Background="#FF464242">
-        <Label Content="Подключение к базе данных" HorizontalAlignment="Center" Margin="0,14,0,0" VerticalAlignment="Top" Foreground="White" FontSize="18"/>
-        <TextBox x:Name="ipDbSetting" HorizontalAlignment="Left" Margin="68,54,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="154" Height="30" VerticalContentAlignment="Center" Background="#FF464242" BorderBrush="#FF464242" Foreground="White"/>
-        <TextBox x:Name="dbNameSetting" HorizontalAlignment="Left" Margin="68,97,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="154" Height="30" VerticalContentAlignment="Center" Background="#FF464242" BorderBrush="#FF464242" Foreground="White"/>
-        <Button x:Name="saveDbSettings" Content="Сохранить" HorizontalAlignment="Left" Margin="68,153,0,0" VerticalAlignment="Top" Width="154" Background="#FF66B1B3" Click="saveIpDb"/>
-        <Label Content="IP" HorizontalAlignment="Left" Margin="43,52,0,0" VerticalAlignment="Top" Foreground="White" FontSize="18" RenderTransformOrigin="0.422,1.105"/>
-        <Label Content="База данных" HorizontalAlignment="Left" Margin="0,100,0,0" VerticalAlignment="Top" Foreground="White" FontSize="10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="69"/>
-        <Line X1="68" Y1="85" X2="222" Y2="85" Stroke="White" />
-        <Line X1="68" Y1="128" X2="222" Y2="128" Stroke="White" />
-        <Button Style="{DynamicResource closeBtnDbSettings}" x:Name="cancelDbSetting" Content="" HorizontalAlignment="Left" Margin="237,0,0,0" VerticalAlignment="Top" Width="20" Height="20" Cursor="Hand" Click="closeDbSettings">
-            <Button.Background>
-                <ImageBrush ImageSource="/Resources/Icons/Close.png"/>
-            </Button.Background>
-        </Button>
-    </Grid>
+    <Border CornerRadius="15" Background="#FF464242">
+        <Grid>
+            <Label Content="Подключение к базе данных" HorizontalAlignment="Center" Margin="0,14,0,0" VerticalAlignment="Top" Foreground="White" FontSize="18"/>
+            <TextBox x:Name="ipDbSetting" HorizontalAlignment="Left" Margin="68,54,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="154" Height="30" VerticalContentAlignment="Center" Background="#FF464242" BorderBrush="#FF464242" Foreground="White"/>
+            <TextBox x:Name="dbNameSetting" HorizontalAlignment="Left" Margin="68,97,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="154" Height="30" VerticalContentAlignment="Center" Background="#FF464242" BorderBrush="#FF464242" Foreground="White"/>
+            <Button x:Name="saveDbSettings" Content="Сохранить" HorizontalAlignment="Left" Margin="68,153,0,0" VerticalAlignment="Top" Width="154" Background="#FF66B1B3" Click="saveIpDb"/>
+            <Label Content="IP" HorizontalAlignment="Left" Margin="43,52,0,0" VerticalAlignment="Top" Foreground="White" FontSize="18" RenderTransformOrigin="0.422,1.105"/>
+            <Label Content="База данных" HorizontalAlignment="Left" Margin="0,100,0,0" VerticalAlignment="Top" Foreground="White" FontSize="10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="69"/>
+            <Line X1="68" Y1="85" X2="222" Y2="85" Stroke="White" />
+            <Line X1="68" Y1="128" X2="222" Y2="128" Stroke="White" />
+            <Button Style="{DynamicResource closeBtnDbSettings}" x:Name="cancelDbSetting" Content="" HorizontalAlignment="Left" Margin="237,0,0,0" VerticalAlignment="Top" Width="20" Height="20" Cursor="Hand" Click="closeDbSettings">
+                <Button.Background>
+                    <ImageBrush ImageSource="/Resources/Icons/Close.png"/>
+                </Button.Background>
+            </Button>
+        </Grid>
+    </Border>
 </Window>

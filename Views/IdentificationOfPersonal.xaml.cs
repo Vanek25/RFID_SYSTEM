@@ -37,8 +37,8 @@ namespace RFID_SYSTEM.Views
         public IdentificationOfPersonal()
         {
             InitializeComponent();
-            
 
+            Menu.SelectedIndex = 0;
             InitializedSerialPorts();
         }
 

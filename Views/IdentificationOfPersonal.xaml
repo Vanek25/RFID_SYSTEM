@@ -5,103 +5,114 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RFID_SYSTEM.Views"
         mc:Ignorable="d"
-        Title="IdentificationOfPersonal" Height="759" Width="1338" WindowStyle="None" ResizeMode="NoResize" Background="#FF313752" WindowStartupLocation="CenterScreen" WindowState="Normal">
+        Title="IdentificationOfPersonal" Height="759" Width="1338" WindowStyle="None" ResizeMode="NoResize" Background="Transparent" 
+        WindowStartupLocation="CenterScreen" AllowsTransparency="True">
 
-    <Grid>
-        <Grid.Effect>
-            <DropShadowEffect BlurRadius="30" ShadowDepth="2" Direction="-90" Color="Gray"/>
-        </Grid.Effect>
+    <Border CornerRadius="25" Background="#FF151F2D">
+        <Grid>
+            <Border CornerRadius="25 0 0 25" Background="#FF151F2D">
+                <Grid>
+                    <StackPanel Margin="0,0,1268,0" Background="#FF1E2E44">
 
-        <StackPanel Margin="0,0,1268,0" Background="#FF1E202F">
+                        <Button x:Name="Home" Height="58" Background="Transparent" BorderBrush="Transparent" Margin="0,250,0,20" Click="openHomePage">
+                            <Image Source="/Resources/Icons/Home.png" Stretch="Fill" Height="42" Width="41"></Image>
+                        </Button>
+                        <Button x:Name="Settings" Height="56" Background="Transparent" BorderBrush="Transparent" Margin="0,80,0,20" Click="openSettings">
+                            <Image Source="/Resources/Icons/SettingMainPage.png" Stretch="Fill" Height="42" Width="41"></Image>
+                        </Button>
 
-            <Button x:Name="Home" Height="58" Background="Transparent" BorderBrush="Transparent" Margin="0,250,0,20" Click="openHomePage">
-                <Image Source="/Resources/Icons/Home.png" Stretch="Fill" Height="42" Width="41"></Image>
-            </Button>
-            <Button x:Name="Settings" Height="56" Background="Transparent" BorderBrush="Transparent" Margin="0,80,0,20" Click="openSettings">
-                <Image Source="/Resources/Icons/SettingMainPage.png" Stretch="Fill" Height="42" Width="41"></Image>
-            </Button>
+                    </StackPanel>
+                </Grid>
+            </Border>
 
-        </StackPanel>
+            <Grid Margin="70,0,0,721" Background="#FF1E2E44">
+                <Label Content="Система RFID" FontFamily="Open sens condensed" FontSize="26" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White"/>
+                <Button x:Name="Close" Width="40" HorizontalAlignment="Right" BorderBrush="Transparent" Background="Transparent"  Click="closeApp">
+                    <Image Source="/Resources/Icons/Close.png" Stretch="Fill" Cursor="Hand"></Image>
+                </Button>
+            </Grid>
 
-        <Grid Margin="70,0,0,721" Background="#FF1E202F">
-            <Label Content="Система RFID" FontFamily="Open sens condensed" FontSize="26" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White"/>
-            <Button x:Name="Close" Width="40" HorizontalAlignment="Right" BorderBrush="Transparent" Background="Transparent"  Click="closeApp">
-                <Image Source="/Resources/Icons/Close.png" Stretch="Fill" Cursor="Hand"></Image>
-            </Button>
+            <TabControl x:Name="Menu" Margin="70,38,0,0" Background="#FF151F2D" BorderBrush="#FF313752" >
+                <TabItem x:Name="HomeTab" Header="Home" Visibility="Collapsed">
+                    <TabItem.Background>
+                        <LinearGradientBrush EndPoint="0,1">
+                            <GradientStop Color="#FFF0F0F0"/>
+                            <GradientStop Color="#FF313752" Offset="1"/>
+                        </LinearGradientBrush>
+                    </TabItem.Background>
+                    <Grid Background="#FF151F2D">
+                        <Image x:Name="imgEmp" Margin="408,10,408,0" VerticalAlignment="Top" FlowDirection="LeftToRight" Source="/Resources/Icons/MainUser.png" Height="294"/>
+                        <TextBox x:Name="lblFio" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Width="922" Height="63" Background="#FF151F2D" SelectionBrush="#FF151F2D" VerticalContentAlignment="Center" Foreground="White" FontSize="48" FontFamily="Berlin Sans FB Demi" FontWeight="Normal" BorderBrush="#FF151F2D" HorizontalContentAlignment="Center" Margin="0,336,0,0" IsEnabled="False"/>
+                        <Label Content="ФИО" HorizontalAlignment="Left" Margin="71,336,0,0" VerticalAlignment="Top" Height="78" Width="94" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="24" FontWeight="Bold" FontFamily="Segoe UI"/>
+                        <Line X1="168" Y1="407" X2="1095" Y2="407" Stroke="White" />
+                        <Line X1="190" Y1="500" X2="725" Y2="500" Stroke="White" />
+                        <Line X1="190" Y1="580" X2="725" Y2="580" Stroke="White" />
+                        <TextBox x:Name="lblCompany" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="529" Height="48" Background="#FF151F2D" SelectionBrush="#FF151F2D" VerticalContentAlignment="Center" Foreground="White" FontSize="36" FontFamily="Berlin Sans FB Demi" FontWeight="Normal" BorderBrush="#FF151F2D" HorizontalContentAlignment="Center" Margin="193,447,0,0" IsEnabled="False"/>
+                        <Label Content="Компания" HorizontalAlignment="Left" Margin="10,432,0,0" VerticalAlignment="Top" Height="78" Width="155" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="24" FontWeight="Bold"/>
+                        <TextBox x:Name="lblPost" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="529" Height="48" Background="#FF151F2D" SelectionBrush="#FF151F2D" VerticalContentAlignment="Center" Foreground="White" FontSize="36" FontFamily="Berlin Sans FB Demi" FontWeight="Normal" BorderBrush="#FF151F2D" HorizontalContentAlignment="Center" Margin="193,525,0,0" IsEnabled="False"/>
+                        <Label Content="Должность" HorizontalAlignment="Left" Margin="10,510,0,0" VerticalAlignment="Top" Height="78" Width="155" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="24" FontWeight="Bold"/>
+                        <Image HorizontalAlignment="Left" Height="152" Margin="88,38,0,0" VerticalAlignment="Top" Width="152" Source="/Resources/Icons/LeftArrow.png" Stretch="Fill" Visibility="Hidden"/>
+                        <Image Height="152" Margin="1020,38,88,0" VerticalAlignment="Top" Source="/Resources/Icons/RightArrow.png" Stretch="Fill" Visibility="Hidden"/>
+                        <Label x:Name="LblConnect" Content="Устройство не подключено" HorizontalAlignment="Left" Margin="952,648,0,0" VerticalAlignment="Top" Foreground="White" FontSize="20"/>
+                        <Ellipse x:Name="ElipseAboutConnect" HorizontalAlignment="Left" Height="26" Margin="1226,656,0,0" VerticalAlignment="Top" Width="26" Stroke="Black" Fill="Red" StrokeThickness="0"/>
+                    </Grid>
+                </TabItem>
+
+                <TabItem x:Name="SettingsTab" Header ="Settings" Visibility="Collapsed">
+                    <TabItem.Background>
+                        <LinearGradientBrush EndPoint="0,1">
+                            <GradientStop Color="#FFF0F0F0"/>
+                            <GradientStop Color="#FF313752" Offset="1"/>
+                        </LinearGradientBrush>
+                    </TabItem.Background>
+                    <Grid Background="#FF151F2D">
+                        <GroupBox Header="Устройство" Margin="293,61,293,465" Foreground="#FFFFFCFC" FontSize="24" FontWeight="Bold">
+                            <Grid>
+                                <ComboBox x:Name="SerialPortsCmbBox" Margin="10,0,0,0" VerticalAlignment="Center" 
+                                          Height="40" 
+                                          HorizontalAlignment="Left" 
+                                          Width="260" 
+                                          Visibility="Visible">
+                                </ComboBox>
+
+                                <Button x:Name="refreshComPortBtn" Margin="315,0,0,0" Content="Обновить" 
+                                        HorizontalAlignment="Left" 
+                                        Width="137" 
+                                        Click="refreshComPort" VerticalAlignment="Center" Background="#FF788AC3" Foreground="White">
+                                    <Button.Resources>
+                                        <Style TargetType="Border">
+                                            <Setter Property="CornerRadius" Value="15"/>
+                                        </Style>
+                                    </Button.Resources>
+                                </Button>
+
+                                <Button x:Name="SerialPortConnectBtn" Margin="468,18,0,17" Content="Подключить" 
+                                        HorizontalAlignment="Center" 
+                                        Width="178" 
+                                        Click="connectArduino" VerticalAlignment="Center" Background="#FF6CCA83" Foreground="#FF464242">
+                                    <Button.Resources>
+                                        <Style TargetType="Border">
+                                            <Setter Property="CornerRadius" Value="15"/>
+                                        </Style>
+                                    </Button.Resources>
+                                </Button>
+
+                            </Grid>
+
+                        </GroupBox>
+                        <GroupBox Header="Тема" Margin="293,347,293,193" Foreground="#FFFFFCFC" FontSize="24" FontWeight="Bold">
+                            <Grid>
+                                <RadioButton Content="Светлая" HorizontalAlignment="Left" Margin="46,0,0,0" VerticalAlignment="Center" Foreground="White" GroupName="Theme"/>
+                                <RadioButton Content="Темная" HorizontalAlignment="Left" Margin="198,0,0,0" VerticalAlignment="Center" Foreground="White" GroupName="Theme"/>
+
+                            </Grid>
+
+                        </GroupBox>
+
+
+                    </Grid>
+                </TabItem>
+            </TabControl>
         </Grid>
-
-        <TabControl x:Name="Menu" Margin="70,38,0,0" Background="#FF313752" BorderBrush="#FF313752" SelectedItem="{Binding SelectedItem}">
-            <TabItem x:Name="HomeTab" Header="Home" Visibility="Visible">
-                <TabItem.Background>
-                    <LinearGradientBrush EndPoint="0,1">
-                        <GradientStop Color="#FFF0F0F0"/>
-                        <GradientStop Color="#FF313752" Offset="1"/>
-                    </LinearGradientBrush>
-                </TabItem.Background>
-                <Grid Background="#FF313752">
-                    <Image x:Name="imgEmp" Margin="408,10,408,0" VerticalAlignment="Top" FlowDirection="LeftToRight" Source="/Resources/Icons/MainUser.png" Height="294"/>
-                    <TextBox x:Name="lblFio" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Width="922" Height="63" Background="#FF313752" SelectionBrush="#FF313752" VerticalContentAlignment="Center" Foreground="White" FontSize="48" FontFamily="Berlin Sans FB Demi" FontWeight="Normal" BorderBrush="#FF313752" HorizontalContentAlignment="Center" Margin="0,336,0,0" IsEnabled="False"/>
-                    <Label Content="ФИО" HorizontalAlignment="Left" Margin="71,336,0,0" VerticalAlignment="Top" Height="78" Width="94" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="24" FontWeight="Bold" FontFamily="Segoe UI"/>
-                    <Line X1="168" Y1="407" X2="1095" Y2="407" Stroke="White" />
-                    <Line X1="190" Y1="500" X2="725" Y2="500" Stroke="White" />
-                    <Line X1="190" Y1="580" X2="725" Y2="580" Stroke="White" />
-                    <TextBox x:Name="lblCompany" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="529" Height="48" Background="#FF313752" SelectionBrush="#FF313752" VerticalContentAlignment="Center" Foreground="White" FontSize="36" FontFamily="Berlin Sans FB Demi" FontWeight="Normal" BorderBrush="#FF313752" HorizontalContentAlignment="Center" Margin="193,447,0,0" IsEnabled="False"/>
-                    <Label Content="Компания" HorizontalAlignment="Left" Margin="10,432,0,0" VerticalAlignment="Top" Height="78" Width="155" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="24" FontWeight="Bold"/>
-                    <TextBox x:Name="lblPost" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="529" Height="48" Background="#FF313752" SelectionBrush="#FF313752" VerticalContentAlignment="Center" Foreground="White" FontSize="36" FontFamily="Berlin Sans FB Demi" FontWeight="Normal" BorderBrush="#FF313752" HorizontalContentAlignment="Center" Margin="193,525,0,0" IsEnabled="False"/>
-                    <Label Content="Должность" HorizontalAlignment="Left" Margin="10,510,0,0" VerticalAlignment="Top" Height="78" Width="155" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="24" FontWeight="Bold"/>
-                    <Image HorizontalAlignment="Left" Height="152" Margin="88,38,0,0" VerticalAlignment="Top" Width="152" Source="/Resources/Icons/LeftArrow.png" Stretch="Fill"/>
-                    <Image Height="152" Margin="1020,38,88,0" VerticalAlignment="Top" Source="/Resources/Icons/RightArrow.png" Stretch="Fill"/>
-                    <Label x:Name="LblConnect" Content="Устройство не подключено" HorizontalAlignment="Left" Margin="952,648,0,0" VerticalAlignment="Top" Foreground="White" FontSize="20"/>
-                    <Ellipse x:Name="ElipseAboutConnect" HorizontalAlignment="Left" Height="26" Margin="1226,656,0,0" VerticalAlignment="Top" Width="26" Stroke="Black" Fill="Red" StrokeThickness="0"/>
-                </Grid>
-            </TabItem>
-
-            <TabItem x:Name="SettingsTab" Header ="Settings" Visibility="Visible">
-                <TabItem.Background>
-                    <LinearGradientBrush EndPoint="0,1">
-                        <GradientStop Color="#FFF0F0F0"/>
-                        <GradientStop Color="#FF313752" Offset="1"/>
-                    </LinearGradientBrush>
-                </TabItem.Background>
-                <Grid Background="#FF313752">
-                    <GroupBox Header="Устройство" Margin="29,41,557,539" Foreground="#FFFFFCFC" FontSize="24" FontWeight="Bold" Height="120">
-                        <Grid>
-                            <ComboBox x:Name="SerialPortsCmbBox" Margin="10,0,0,0" VerticalAlignment="Center" 
-                                      Height="40" 
-                                      HorizontalAlignment="Left" 
-                                      Width="260" 
-                                      Visibility="Visible">
-                            </ComboBox>
-
-                            <Button x:Name="refreshComPortBtn" Margin="315,0,0,0" Content="Обновить" 
-                                    HorizontalAlignment="Left" 
-                                    Width="137" 
-                                    Click="refreshComPort" VerticalAlignment="Center" Background="#FF788AC3" Foreground="White">
-                                <Button.Resources>
-                                    <Style TargetType="Border">
-                                        <Setter Property="CornerRadius" Value="15"/>
-                                    </Style>
-                                </Button.Resources>
-                            </Button>
-
-                            <Button x:Name="SerialPortConnectBtn" Margin="468,18,0,17" Content="Подключить" 
-                                    HorizontalAlignment="Center" 
-                                    Width="178" 
-                                    Click="connectArduino" VerticalAlignment="Center" Background="#FF6CCA83" Foreground="#FF464242">
-                                <Button.Resources>
-                                    <Style TargetType="Border">
-                                        <Setter Property="CornerRadius" Value="15"/>
-                                    </Style>
-                                </Button.Resources>
-                            </Button>
-
-                        </Grid>
-
-                    </GroupBox>
-
-
-                </Grid>
-            </TabItem>
-        </TabControl>
-    </Grid>
+    </Border>
 </Window>

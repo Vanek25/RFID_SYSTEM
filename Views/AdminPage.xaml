@@ -1,0 +1,66 @@
+﻿<Window x:Class="RFID_SYSTEM.Views.AdminPage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RFID_SYSTEM.Views"
+        mc:Ignorable="d"
+        Title="AdminPage" Height="759" Width="1338" ResizeMode="NoResize" WindowStyle="None" AllowsTransparency="True"
+        WindowStartupLocation="CenterScreen" Background="Transparent">
+
+    <Border CornerRadius="35" Background="#151F2d" MouseDown="Border_MouseDown">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!--Left Menu-->
+            <Border Grid.RowSpan="3" CornerRadius="25 0 0 25" Background="#1e2e44">
+                <Grid>
+                    <StackPanel VerticalAlignment="Top">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 30 0 40">
+                            <Ellipse Width="8" Height="8" Fill="Red"/>
+                            <Ellipse Width="8" Height="8" Fill="Green" Margin="7 0"/>
+                            <Ellipse Width="8" Height="8" Fill="Yellow"/>
+                        </StackPanel>
+                    </StackPanel>
+
+                    <StackPanel VerticalAlignment="Center">
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="0 0 0 0">
+                            <Button x:Name="Persons" Height="70" Background="Transparent" BorderBrush="Transparent" Click="openPersonsInfo">
+                                <Image Source="/Resources/Icons/Persons.png" Stretch="Fill" Height="70" Width="70"></Image>
+                            </Button>
+                            <Button x:Name="Companies" Height="70" Background="Transparent" BorderBrush="Transparent" Margin="0,80,0,0" Click="openCompaniesInfo">
+                                <Image Source="/Resources/Icons/Companies.png" Stretch="Fill" Height="70" Width="70"></Image>
+                            </Button>
+                            <Button x:Name="Settings" Height="70" Background="Transparent" BorderBrush="Transparent" Margin="0,180,0,0" Click="openSettings">
+                                <Image Source="/Resources/Icons/SettingMainPage.png" Stretch="Fill" Height="70" Width="70"></Image>
+                            </Button>
+                        </StackPanel>
+                    </StackPanel>
+
+                </Grid>
+            </Border>
+            <Grid Grid.Column="1" Grid.RowSpan="3" HorizontalAlignment="Center" Width="1238" Height="63" VerticalAlignment="Top">
+                <Button x:Name="closeBtn" Content="" Margin="1179,0,5,0" VerticalAlignment="Center" Height="55">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/Resources/Icons/Close.png"/>
+                    </Button.Background>
+                </Button>
+                <Label Content="Система RFID      Администратор" HorizontalAlignment="Center" Margin="0,-5,0,0" VerticalAlignment="Top" Foreground="White" FontSize="36"/>
+            </Grid>
+
+
+
+
+        </Grid>
+    </Border>
+
+</Window>

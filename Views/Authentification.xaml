@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RFID_SYSTEM.Views"
         mc:Ignorable="d"
-        Title="Authenti" Height="395" Width="380" Background="Transparent" WindowStartupLocation="CenterScreen" WindowStyle="None" ResizeMode="NoResize" AllowsTransparency="True" >
+        Title="Authenti" Height="596" Width="380" Background="Transparent" WindowStartupLocation="CenterScreen" WindowStyle="None" ResizeMode="NoResize" AllowsTransparency="True" >
     <Window.Resources>
         <ImageBrush x:Key="closeIcon" ImageSource="/Resources/Icons/Close.png" Stretch="Fill"/>
         <Style x:Key="FocusVisual">
@@ -20,9 +20,9 @@
         <SolidColorBrush x:Key="Button.Static.Background" Color="#FFDDDDDD"/>
         <SolidColorBrush x:Key="Button.Static.Border" Color="#FF707070"/>
         <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#FFBEE6FD"/>
-        <SolidColorBrush x:Key="Button.MouseOver.Border" Color="#FF3C7FB1"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Border" Color="#FF2B2929"/>
         <SolidColorBrush x:Key="Button.Pressed.Background" Color="#FFC4E5F6"/>
-        <SolidColorBrush x:Key="Button.Pressed.Border" Color="#FF2C628B"/>
+        <SolidColorBrush x:Key="Button.Pressed.Border" Color="#FF2B2929"/>
         <SolidColorBrush x:Key="Button.Disabled.Background" Color="#FFF4F4F4"/>
         <SolidColorBrush x:Key="Button.Disabled.Border" Color="#FFADB2B5"/>
         <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#FF838383"/>
@@ -74,10 +74,11 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        
         <SolidColorBrush x:Key="Button.Static.Background1" Color="#FFDDDDDD"/>
         <SolidColorBrush x:Key="Button.Static.Border1" Color="#FF707070"/>
-        <SolidColorBrush x:Key="Button.MouseOver.Border1" Color="#FF3C7FB1"/>
-        <SolidColorBrush x:Key="Button.Pressed.Border1" Color="#FF2C628B"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Border1" Color="#FF2B2929"/>
+        <SolidColorBrush x:Key="Button.Pressed.Border1" Color="#FF2B2929"/>
         <SolidColorBrush x:Key="Button.Disabled.Background1" Color="#FFF4F4F4"/>
         <SolidColorBrush x:Key="Button.Disabled.Border1" Color="#FFADB2B5"/>
         <SolidColorBrush x:Key="Button.Disabled.Foreground1" Color="#FF838383"/>
@@ -125,11 +126,11 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Border Background="#FF2B2929" CornerRadius ="15">
-            <Button Style="{DynamicResource settingBtn}" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Width="32" BorderBrush="#FF2B2929" BorderThickness="1,1,1,1" Click="openConSettings" Cursor="Hand" Margin="10,354,0,0" Height="31">
-                <Button.Background>
-                    <ImageBrush Stretch="Fill" ImageSource="/Resources/Icons/Settings.png"/>
-                </Button.Background>
-            </Button>
+
+
+
+
+
         </Border>
         <Image Height="131" Margin="126,10,126,0" 
                VerticalAlignment="Top" 
@@ -145,7 +146,40 @@
                  VerticalContentAlignment="Center" 
                  FontSize="22" 
                  FontWeight="Bold" SelectionBrush="#FF2B2929"/>
-        <Button x:Name="authDbBtn" Content="Войти" HorizontalAlignment="Center" Margin="0,298,0,0" 
+        <TextBox x:Name="txtbxDbIp" HorizontalAlignment="Left" TextWrapping="Wrap" 
+                VerticalAlignment="Top" 
+                Width="214" 
+                Height="38" 
+                Background="#FF2B2929" 
+                Foreground="White" 
+                BorderBrush="#FF2B2929" 
+                HorizontalContentAlignment="Left" 
+                VerticalContentAlignment="Center" 
+                FontSize="22" 
+                FontWeight="Bold" SelectionBrush="#FF2B2929" Margin="103,287,0,0"/>
+        <TextBox x:Name="txtbxDbPort" HorizontalAlignment="Left" TextWrapping="Wrap" 
+                VerticalAlignment="Top" 
+                Width="214" 
+                Height="38" 
+                Background="#FF2B2929" 
+                Foreground="White" 
+                BorderBrush="#FF2B2929" 
+                HorizontalContentAlignment="Left" 
+                VerticalContentAlignment="Center" 
+                FontSize="22" 
+                FontWeight="Bold" SelectionBrush="#FF2B2929" Margin="103,349,0,0"/>
+        <TextBox x:Name="txtbxDbName" HorizontalAlignment="Left" TextWrapping="Wrap" 
+                VerticalAlignment="Top" 
+                Width="214" 
+                Height="38" 
+                Background="#FF2B2929" 
+                Foreground="White" 
+                BorderBrush="#FF2B2929" 
+                HorizontalContentAlignment="Left" 
+                VerticalContentAlignment="Center" 
+                FontSize="22" 
+                FontWeight="Bold" SelectionBrush="#FF2B2929" Margin="103,418,0,0"/>
+        <Button x:Name="authDbBtn" Content="Войти" HorizontalAlignment="Center" Margin="0,508,0,0" 
                 VerticalAlignment="Top" 
                 Height="33" Width="152" 
                 Background="#FF535F6D" 
@@ -157,16 +191,28 @@
                 </Style>
             </Button.Resources>
         </Button>
-        <CheckBox Content="Запомнить" HorizontalAlignment="Center" Margin="0,348,0,0" 
+        <CheckBox x:Name="chckBxSave" Content="Запомнить" HorizontalAlignment="Center" Margin="0,564,0,0" 
                   VerticalAlignment="Top" 
                   Background="White" 
                   Foreground="White" 
-                  Width="84"/>
+                  Width="84" Checked="chckBxSaveChecked"/>
         <Image HorizontalAlignment="Left" Height="38" Margin="54,160,0,0" 
                VerticalAlignment="Top" 
                Width="38" 
                Source="/Resources/Icons/Login.png" 
                Stretch="Fill"/>
+        <Image HorizontalAlignment="Left" Height="38" 
+                VerticalAlignment="Top" 
+                Width="38" 
+                Stretch="Fill" Margin="54,287,0,0" Source="/Resources/Icons/ip.png"/>
+        <Image HorizontalAlignment="Left" Height="38" 
+                VerticalAlignment="Top" 
+                Width="38" 
+                Stretch="Fill" Source="/Resources/Icons/Port.png" Margin="54,349,0,0"/>
+        <Image HorizontalAlignment="Left" Height="38" 
+                VerticalAlignment="Top" 
+                Width="38" 
+                Stretch="Fill" Source="/Resources/Icons/Database.png" Margin="54,418,0,0"/>
         <PasswordBox x:Name="txtbxPass" HorizontalAlignment="Left" Margin="103,221,0,0" 
                      VerticalAlignment="Top" 
                      Width="214" 
@@ -177,6 +223,7 @@
                      VerticalContentAlignment="Center" 
                      HorizontalContentAlignment="Left" 
                      FontSize="20" SelectionBrush="#FF2B2929"/>
+
         <Image HorizontalAlignment="Left" Height="38" Margin="54,221,0,0" 
                VerticalAlignment="Top" 
                Width="38" 
@@ -190,6 +237,9 @@
 
         <Line X1="103" Y1="204" X2="315" Y2="204" Stroke="White" />
         <Line X1="103" Y1="265" X2="315" Y2="265" Stroke="White" />
+        <Line X1="103" Y1="333" X2="315" Y2="333" Stroke="White" />
+        <Line X1="103" Y1="395" X2="315" Y2="395" Stroke="White" />
+        <Line X1="103" Y1="463" X2="315" Y2="463" Stroke="White" />
 
 
     </Grid>
